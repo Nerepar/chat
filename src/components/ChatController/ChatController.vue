@@ -3,16 +3,33 @@
 <script>
     import ChatAddRoom from "@/components/ChatAddRoom/ChatAddRoom";
     import ChatRoom from "@/components/ChatRoom/ChatRoom";
-    import ChatRoomRegistry from "@/components/ChatRoomRegistry/ChatRoomRegistry";
+    import RoomStorage from "@/components/RoomStorage/RoomStorage";
 
     export default {
         name: "ChatController",
         components: {
-            ChatAddRoom, ChatRoom, ChatRoomRegistry
+            ChatAddRoom, ChatRoom, RoomStorage
         },
         data() {
             return {
-
+                addFormVisible: false,
+                indexRoom: 0,
+                desk: {
+                    title: 'Комнаты',
+                    rooms: []
+                },
+            };
+        },
+        methods: {
+            addRoomClick() {
+                this.addFormVisible = true
+            },
+            closeAddRoom() {
+                this.addFormVisible = false
+            },
+            addRoom(roomData) {
+                this.indexRoom++;
+                this.desk[0].rooms.push(roomData)
             }
         }
     }

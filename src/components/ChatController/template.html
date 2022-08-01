@@ -1,5 +1,13 @@
 <div class="ChatController__wrapper full-screen hidden-overflow flex flex-justify-start">
-    <div class="ChatController-AddRoom__wrapper">
-        <i class="fa fa-plus cursor-pointer"></i>
-    </div>
+    <RoomStorage
+            :key="index"
+            @addRoomClick="addRoomClick"
+            :elementIndex="index"
+    />
+    <ChatAddRoom
+            v-if="addFormVisible"
+            :index-room="indexRoom"
+            @addRoom="addRoom"
+            @closeAddRoom="closeAddRoom"
+    />
 </div>
